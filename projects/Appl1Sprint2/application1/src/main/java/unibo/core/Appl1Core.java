@@ -30,6 +30,7 @@ public class Appl1Core extends Observable implements IAppl1Core {
             updateObservers("robot-turnLeft");
         }
         robotMustBeAtHome("robot-athomeend");
+        started = false;
     }
     private void walkBySteppingWithStop(int n) throws Exception {
         CommUtils.outyellow("walkBySteppingWithStop n="+ n );
