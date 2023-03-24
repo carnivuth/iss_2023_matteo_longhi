@@ -189,7 +189,6 @@ div.imagedesc{
 </style>
 
 <head>
-
     <meta charset="UTF-8">
 
     <title>Appl1HTMLSprint2LonghiMatteo</title></head>
@@ -347,7 +346,21 @@ div.imagedesc{
     </ul>
 </p>
 <p>le due fasi di sviluppo possono essere eseguite in parallelo da team indipendenti che hanno come vincolo il linguaggio definito in precedenza</p>
-
+<h3>COMUNICAZIONE TRAMITE WS</h3>
+<ul>
+    <li>
+        la ricezione dei messaggi inviati dal robot tramite ws prevede una semantica asincrona
+    </li>
+    <li>
+        la logica applicativa è pensata per interagire con il robot tramite chiamate sincrone
+    </li>
+    <li>
+        per riutilizzare la classe che implementa la funzionalità applicativa si puo predisporre un wrapper che trasforma la semantica asincrona in semantica sincrona
+    </li>
+    <li>
+        si puo predisporre una classe che mascheri l'asincronicità del supporto di comunicazione utilizzato rendendo le comunicazioni con il robot bloccanti fino alla ricezione di un messaggio di stato
+    </li>
+</ul>
 <h2>Test plans</h2>
 
 <h2>Project</h2>
