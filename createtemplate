@@ -1,2 +1,0 @@
-#!/bin/bash
-cp LonghiMatteoTemplate.html Deliverables/"$1"
