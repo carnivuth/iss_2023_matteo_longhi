@@ -1,0 +1,407 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<!--
+<link rel="stylesheet" type="text/css" href="../css/issStyle1.css">
+<script type="text/javascript" src="../css/issStyle.js"></script>
+-->
+<style type="text/css">
+body
+{
+    margin-left:  30px;
+    margin-right: 30px;
+};
+
+P
+{
+    font-family: Tahoma;
+    font-size: 10pt;
+};
+
+a, a:visited, a:active, a:link, a:hover {
+    text-decoration: underline;
+    color: #545454;
+    background-color: transparent;
+	font-size: 93%;
+}
+
+a:hover {
+    background-color: #cccccc;
+}
+
+
+hr {
+    clear: both;
+    height: 1px;
+    color: #242424;
+    background-color: transparent;
+}
+
+h1, h2, h3 {
+    color: #242424;
+    clear: left;
+    font: 100% Tahoma, Helvetica, Arial, sans-serif;
+    margin-bottom: 0.5em;
+    padding-top: 0.5em;
+	border-radius: 10px;
+	padding: 5px;
+}
+
+top {
+	width: 100%;
+}
+
+
+#i {
+    color: #ff1010;
+}
+tt{
+	font-family: "Arial";
+    font-size: 90%;
+	color: #006600;
+}
+em{
+	font-family: "Arial";
+    font-size: 80%;
+	font-weight: bold;
+	border-style:solid;
+	border-color: #abe876;
+    color: #1632cc;
+}
+bc{
+	font-family: "Arial";
+	font-size: 90%;
+	font-weight: bold;
+    color: #990000;
+	background-color: #fcf8c7;
+}
+ks{
+	font-family: "Arial";
+	font-weight: bold;
+    color: #0000CD	;
+	font-size: 90%;
+}
+kc{
+	font-family: "Arial";
+	font-weight: bold;
+    color: #008000	;
+	font-size: 90%;
+}
+pre{
+	font-family: "Consolas";
+	font-size: 85%;
+	background-color: #f5f5f5;
+	border: 1.5px solid silver;
+	padding: 5px;
+}
+m{
+	font-family: "Helvetica";
+	line-height: 100%;
+ 	font-size: 75%;
+}
+div.body{
+	 
+    font-size: 18px;
+}
+k{
+    color: #990000;
+	font-weight: bold;
+	font-size: 90%;
+}
+h1 {
+    font-size: 150%;
+    background-color: #b2c0ff;
+	padding: 10px;
+}
+
+h2 {
+    background-color: #9ed8ff;
+    font-size: 130%;
+}
+
+h3 {
+	background-color: #e6ccff;
+    font-size: 100%;
+}
+h4 {
+    background-color: #ccffcc;
+    font-size: 100%;
+	width: 95%;
+	border-radius: 5px;
+	padding: 2px;
+}
+h5 {
+    background-color: #d5ffb0;
+    font-size: 100%;
+
+}
+div.req{
+	background-color: #d9ffb3;
+    font-size: 18px;
+	width: 700px;
+    border: 3px solid green;
+    padding: 15px;
+    margin: 10px;
+}
+div.remark{
+	background-color: #E3F2FD;
+    border: 1.5px solid #d5f2ed;
+    padding: 15px;
+    margin: 10px;
+	border-radius: 25px;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+ol, ul, li {
+  margin: 0;
+  margin-left: 10px;
+  padding: 0;
+  padding-bottom: 5px;
+}
+
+table, th, td {
+	border: 1px solid black;
+}
+
+img {
+	border: 1.5px solid #d5f2ed
+
+}
+
+a, a:visited, a:active, a:link, a:hover {
+    text-decoration: underline;
+    color: #545454;
+    background-color: transparent;
+}
+
+div.wrapdesc{
+	width: 90%;
+	margin: auto;
+}
+
+div.imagedesc{
+	width: 85%;
+	margin: auto;
+}
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Appl1HTMLSprint3LonghiMatteo</title></head>
+
+<body>
+<div id="top">
+    <h1>LABORATORIO DI INGEGNERIA DEI SISTEMI SOFTWARE <font size="5"></font></h1>
+</div>
+
+<div class="body">
+    <h2>Introduction</h2>
+        <h3> COMPONENTI OTTENUTI NELLO STEP 2</h3>
+        <ul>
+            <li>
+                APPL1CORE
+            </li>
+            <li>
+                COMMAND CONSOLE LOCALE
+            </li>
+        </ul>
+        <h3> ARCHITETTURA LOGICA</h3>
+        <img src="./images/architettura_logica_step2" alt="architettura_logica_step2" width="50%" height="50%"></img>
+
+    <h2>Requirements</h2>
+
+
+    <div class="remark">
+
+        <ul>
+            <li>
+                L’applicazione Appl1 viene ora concepito come un ente attivo capace di ricevere messaggi (comandi start/stop/resume) via P e interpretare tali messaggi, convertendoli in comandi a Appl1Core (e di qui a VirtualRobot23).
+            </li>
+            <li>
+                CmdConsole deve diventare un ente attivo che interagisce con un utente umano e che invia comandi ad Appl1 usando il protocollo P</li>
+        </ul>
+
+
+    </div>
+
+
+    <h2>Requirement analysis</h2>
+    <p>
+    </p>
+
+
+</div>
+
+<h2>Problem analysis</h2>
+<h3> COMMAND CONSOLE REMOTA</h3>
+<p>
+    la command console per come viene concepita nello step 2 non è riusabile in ambiente remoto in quanto:
+    <ul>
+        <li>
+            la console deve comunicare delle informazioni via rete, non è piu possibile effettuare una procedure call
+        </li>
+        <li>
+            la command console deve essere indipendente dal protocollo di comunicazione utilizzato
+        </li>
+    </ul>
+    </p>
+<h3>ADAPTER APPL1</h3>
+<P>
+    <ul>
+        <li>
+            per evitare di reimplementare la logica applicativa si decide di inglobare il POJO appl1Core in un adapter in grado di ricevere comandi dalla command console
+        </li>
+        <li>
+            l'adapter deve essere indipendente dal protocollo di comunicazione utilizzato
+        </li>
+    </ul>
+</P>
+<h3>SUPPORTO DI COMUNICAZIONE</h3>
+<p>
+    <ul>
+        <li>
+            necessario sviluppare un astrazione al supporto di comunicazione
+        </li>
+        <li>
+            sia per la command console che per appl1 si può sfruttare il pattern strategy per il supporto di comunicazione
+        </li>
+    </ul>
+    <img src="./images/pattern-strategy.png" alt="pattern strategy" >
+
+</p>
+<p>
+    funzionalità necessarie per il supporto di comunicazione lato client
+    <ul>
+        <li>
+            <code>sendCommand(String cmd)</code>
+
+        </li>
+        <li>
+            <code>connectToServer(String address)</code>
+        </li>
+    </ul>
+</p>
+<p>
+    interfaccia per il supporto di comunicazione lato server
+    <ul>
+        <li>
+            il supporto deve comunicare con il componente appl1 quando riceve un nuovo comando da parte della Command console
+        </li>
+        <li>
+            il supporto di comunicazione diventa un oggetto osservabile e notifica Appl1 nel momento in cui riceve un messaggio
+        </li>
+    </ul>
+</p>
+<h3>CONFIGURAZIONE DEL SUPPORTO DI COMNUNICAZIONE MEDIANTE FILE</h3>
+<p>
+    <ul>
+        <li>
+            si può utilizzare il pattern factory per fornire al Componente Appl1 l'implementazione del supporto di comunicaizione desiderata
+
+        </li>
+        <li>
+            la classe factory che si occupa di istanziare il supporto di comunicaizione puo determinarlo leggendo da un file
+        </li>
+    </ul>
+</p>
+<h3>ARCHITETTURA LOGICA</h3>
+<img src="./images/architettura_logica.jpg" alt="architettura logica" width="30%" height="30%" >
+
+<h3>LINGUAGGIO DI COMUNICAZIONE</h3>
+<ul>
+    <li>
+        i componenti comunicano mediante stringhe in formato JSON
+    </li>
+    <li>
+        <code>{command:CMD}</code>
+
+    </li>
+    <li>
+        <code>{CMD=start|stop|resume}</code>
+
+    </li>
+</ul>
+<h3>PIANO DI LAVORO</h3>
+<p>
+    <h4>command console</h4>
+    <ul>
+        <li>
+            sviluppo interfaccia supporto di comunicazione client
+        </li>
+        <li>
+            sviluppo di implementazione pilota su protocollo di esempio (HTTP)
+        </li>
+        <li>
+            sviluppo di factory per interfaccia di comunicazione client
+        </li>
+        <li>
+            sviluppo di classe di integrazione per la comunicazione della command console
+        </li>
+    </ul>
+    <h4>componente appl1</h4>
+    <ul>
+        <li>
+            sviluppo interfaccia per supporto di comunicazione server 
+        </li>
+        <li>
+            sviluppo di implementazione pilota su protocollo di esempio (HTTP)
+        </li>
+        <li>
+            sviluppo di factory per interfaccia di comunicazione server
+        </li>
+    </ul>
+</p>
+<p>le due fasi di sviluppo possono essere eseguite in parallelo da team indipendenti che hanno come vincolo il linguaggio definito in precedenza</p>
+<h4>TEMPISTICHE</h4>
+<p> per lo sviluppo del componente appl1 prevedo una giornata di lavoro. Per lo sviluppo del componente command console prevedo un pomeriggio di lavoro </p>
+<h3>COMUNICAZIONE TRAMITE WS</h3>
+<ul>
+    <li>
+        la ricezione dei messaggi inviati dal robot tramite ws prevede una semantica asincrona
+    </li>
+    <li>
+        la logica applicativa è pensata per interagire con il robot tramite chiamate sincrone
+    </li>
+    <li>
+        per riutilizzare la classe che implementa la funzionalità applicativa si puo predisporre un wrapper che trasforma la semantica asincrona in semantica sincrona
+    </li>
+    <li>
+        si puo predisporre una classe che mascheri l'asincronicità del supporto di comunicazione utilizzato rendendo le comunicazioni con il robot bloccanti fino alla ricezione di un messaggio di stato
+    </li>
+</ul>
+<h2>Test plans</h2>
+
+<h2>Project</h2>
+
+<h2>Testing</h2>
+
+
+<h2>Deployment</h2>
+
+
+<h2>Maintenance</h2>
+
+<!-- USEFUL
+<table style="width:100%" border="1">
+<tr>
+<td style="width:50%">
+</td>
+<td></td>
+</tr>
+</table>
+-->
+
+<br/><br/>
+</div>
+
+<div style="background-color:rgba(86, 56, 253, 0.9); width:60%;text-align:left;color:white">
+    By Matteo Longhi email: matteo.longhi5@studio.unibo.it,
+    <img src="./images/fototessera_edited.png" alt="mbot" width="15%" height="15%"><br>
+    GIT repo: https://github.com/carnivuth/iss_2023_matteo_longhi.git
+</div>
+</body>
+</html>
