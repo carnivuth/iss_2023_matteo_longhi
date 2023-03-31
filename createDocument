@@ -1,7 +1,8 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # usefull variables
 TMP="body.html"
+TITLE="title.txt"
 NAME="Matteo"
 SURNAME="Longhi"
 IMAGE_FOLDER="assets"
@@ -12,17 +13,18 @@ TEMPLATE="LonghiMatteoTemplate.html"
 
 #check arguments
  [[ "$#" -ne 2 ]] && echo "wrong number arguments" && exit
- [[ -f "$1" ]] || echo "arguments $1 not a file" && exit
+ #[[ -f "$1" ]] || echo "arguments $1 not a file" && exit
 
 #converting markdown to html
  md2html "$1" -o "$TMP"
+ echo "$2" > "$TITLE"
  #creating file from template
- cpp -P $TEMPLATE_FOLDER$TEMPLATE -o "$OUTPUT_FOLDER$2" 2>/dev/null
+ cpp -P $TEMPLATE_FOLDER$TEMPLATE -o "$OUTPUT_FOLDER$2.html" 2>/dev/null
  #coping assets
  cp -r "$IMAGE_FOLDER_DIR$IMAGE_FOLDER" Deliverables/
  #removing body
  rm "$TMP"
-
+rm "$TITLE"
  #update repo
  git add "Deliverables/$IMAGE_FOLDER/*"
  git add "$OUTPUT_FOLDER/*"
