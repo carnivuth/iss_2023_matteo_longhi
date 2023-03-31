@@ -13,7 +13,7 @@ TEMPLATE="LonghiMatteoTemplate.html"
 #check arguments
  [[ "$#" -ne 2 ]] && echo "wrong number arguments" && exit
  [[ -f "$1" ]] || echo "arguments $1 not a file" && exit
- 
+
 #converting markdown to html
  md2html "$1" -o "$TMP"
  #creating file from template
@@ -22,5 +22,11 @@ TEMPLATE="LonghiMatteoTemplate.html"
  cp -r "$IMAGE_FOLDER_DIR$IMAGE_FOLDER" Deliverables/
  #removing body
  rm "$TMP"
+
+ #update repo
+ git add "Deliverables/$IMAGE_FOLDER/*"
+ git add "$OUTPUT_FOLDER/*"
+ git commit -m "added $2"
+ git push
 
  
