@@ -1,18 +1,26 @@
 package unibo.main;
 
-import unibo.basicomm23.utils.CommUtils;
+import unibo.configs.ConfigAppl1;
 import unibo.core.Appl1;
-import unibo.core.Appl1Core;
 
 public class Appl1HTTPSprint3Appl1 {
 
     private Appl1 appl1;
+    private ConfigAppl1 configurator;
+
 
     public Appl1HTTPSprint3Appl1(){
         configureTheSystem();
     }
-    private void configureTheSystem(){
-        appl1 = new Appl1(50000);
+    private void configureTheSystem()
+    {
+        try {
+            configurator=new ConfigAppl1("/home/matteo/universita/iss/iss_2023_matteo_longhi/projects/Appl1Sprint3v2/application1/src/main/resources/Appl1config.json");
+            appl1 = new Appl1("Appl1",Integer.parseInt(configurator.getServerPort()),configurator.getServerProtocol(),configurator.getVitualRobotIp());
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
     public void doJob() throws Exception{
 
@@ -20,9 +28,7 @@ public class Appl1HTTPSprint3Appl1 {
     }
 
     public static void main( String[] args ) throws Exception {
-        CommUtils.aboutThreads("Before start - ");
         Appl1HTTPSprint3Appl1 appl = new Appl1HTTPSprint3Appl1();
         appl.doJob();
-        CommUtils.aboutThreads("At end - ");
     }
 }
