@@ -72,12 +72,12 @@ public class Appl1Core extends Observable implements IAppl1Core {
         stopped = false;
         notifyAll();  //riattiva waitResume
     }
-    public Appl1Core(){
+    public Appl1Core(String address){
         stopped = false;
-        configure();
+        configure(address);
     }
-    protected void configure(){
-        String URL = "localhost:8090/api/move";
+    protected void configure(String address){
+        String URL = address+":8090/api/move";
         //URL potrebbe essere letto da un file di configurazione
         HTTPCommApache httpSupport = new HTTPCommApache(  URL );
         vr = new VrobotHLMovesHTTPApache( httpSupport );

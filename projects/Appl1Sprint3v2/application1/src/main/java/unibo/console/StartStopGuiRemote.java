@@ -14,13 +14,13 @@ public class StartStopGuiRemote implements Observer {
     private String destName;
     private Interaction2021 conn;
 
-    public StartStopGuiRemote(String destName, ProtocolType protocol, String port) {
+    public StartStopGuiRemote(String destName, ProtocolType protocol, String address, String port) {
         ButtonAsGui concreteButton = ButtonAsGui.createButtons( "", buttonLabels );
         concreteButton.addObserver( this );
         this.destName = destName;
-
-        conn = ConnectionFactory.createClientSupport(protocol,"localhost", port);
+        conn = ConnectionFactory.createClientSupport(protocol,address, port);
     }
+
     @Override //For Observer
     public void update(Observable o , Object arg ) {
         String move = arg.toString();

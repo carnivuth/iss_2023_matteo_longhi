@@ -1,15 +1,9 @@
 package unibo.core;
 
-import com.sun.security.ntlm.Server;
-import unibo.basicomm23.enablers.EnablerAsServer;
 import unibo.basicomm23.enablers.ServerFactory;
 import unibo.basicomm23.interfaces.*;
 import unibo.basicomm23.msg.ProtocolType;
-import unibo.basicomm23.utils.ApplAbstractObserver;
-import unibo.supports.TcpAppl1Support;
 
-import java.io.IOException;
-import java.util.Observable;
 
 public class Appl1 implements IApplMsgHandler {
     private Appl1Core appl1Core;
@@ -17,9 +11,9 @@ public class Appl1 implements IApplMsgHandler {
     private String name;
 
     private int port;
-    public Appl1(String name, int port, ProtocolType pt){
+    public Appl1(String name, int port, ProtocolType pt,String robotAddress){
         server= new ServerFactory(name, port,pt,this);
-        appl1Core=new Appl1Core();
+        appl1Core=new Appl1Core(robotAddress);
         this.name=name;
 
     }
