@@ -22,12 +22,15 @@ dependencies {
     implementation 'org.apache.httpcomponents:httpclient:4.5'
     //JSON
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 
     //CUSTOM unibo
     implementation name: 'unibo.basicomm23-1.0'
+    implementation name: '2p301'
+    implementation 'it.unibo.alice.tuprolog:tuprolog:3.3.0'
 }
 
 application {
     // Define the main class for the application.
-    mainClass = 'unibo.main.Appl1HTTPSprint3'
+    mainClass = 'unibo.main.Appl1HTTPSprint3Appl1'
 }
