@@ -8,7 +8,7 @@
 <head>
    <meta charset="utf-8">
 <title>
-Appl1HTTPSprint3LonghiMatteoV2
+Appl1HTTPSprint3LonghiMatteoV3
 </title></head>
 <body>
 <div id="top">
@@ -21,7 +21,7 @@ Appl1HTTPSprint3LonghiMatteoV2
 <li><h4>componenti ottenuti nello step 2</h4>
 <ul>
 <li><strong>APPL1CORE</strong><ul>
-<li>realizza le funzionalita di logica applicativa</li>
+<li>realizza le funzionalit\U000000e0 di logica applicativa</li>
 </ul>
 </li>
 <li><strong>COMMAND CONSOLE LOCALE</strong><ul>
@@ -30,9 +30,11 @@ Appl1HTTPSprint3LonghiMatteoV2
 </li>
 </ul>
 </li>
-<li><h4>ARCHITETTURA LOGICA</h4>
+<li><h4>ARCHITETTURA LOGICA DI ARRIVO SPRINT 2</h4>
+<ul>
+<li><img src="../assets/image_1681722014856_0.png" alt="image.png"></li>
+</ul>
 </li>
-<li><img src="../assets/architettura_logica_1679838417550_0.jpg" alt="architettura_logica.jpg" width="50%" height="50%"></li>
 </ul>
 </li>
 <li><h2>REQUISITI</h2>
@@ -49,7 +51,7 @@ Appl1HTTPSprint3LonghiMatteoV2
 <li><h2>ANALISI DEL PROBLEMA</h2>
 <ul>
 <li>command console<ul>
-<li>la console deve comunicare delle informazioni via rete, non è piu possibile effettuare una procedure call</li>
+<li>la console deve comunicare delle informazioni via rete, non \U000000e8 piu possibile effettuare una procedure call</li>
 <li>la command console deve essere indipendente dal protocollo di comunicazione utilizzato</li>
 </ul>
 </li>
@@ -58,11 +60,12 @@ Appl1HTTPSprint3LonghiMatteoV2
 <li>l'adapter deve essere indipendente dal protocollo di comunicazione utilizzato</li>
 </ul>
 </li>
-<li>NECESSARIO DEFINIRE UN LAYER DI ASTRAZIONE PER IL SUPPORTO DI COMUNICAZIONE</li>
+<li><h5>NECESSARIO DEFINIRE UN LAYER DI ASTRAZIONE PER IL SUPPORTO DI COMUNICAZIONE</h5>
+</li>
 <li><h4>supporto di comunicazione</h4>
 <ul>
 <li>astrazione al supporto di comunicazione<ul>
-<li>interfaccia per le funzionalita necessarie al supporto di comunicazione client<ul>
+<li>interfaccia per le funzionalit\U000000e0 necessarie al supporto di comunicazione client<ul>
 <li><pre><code>public void forward( String msg ) throws Exception;
 public String request( String msg ) throws Exception;
 public void reply( String msg ) throws Exception;
@@ -72,7 +75,7 @@ public void close( ) throws Exception;
 </li>
 </ul>
 </li>
-<li>questa astrazione puo essere utilizzata per definire le necessita della comunicazione fra qualunque dei due componenti</li>
+<li>questa astrazione pu\U000000f2 essere utilizzata per definire le necessit\U000000e0 della comunicazione fra qualunque dei due componenti</li>
 </ul>
 </li>
 </ul>
@@ -83,7 +86,7 @@ public void close( ) throws Exception;
 </ul>
 </li>
 <li><h4>linguaggio di comunicazione</h4>
-<ul>
+id:: 6419b507-442e-4455-8a2e-b521439e7fa5<ul>
 <li>necessario definire in maniera formale il linguaggio di comunicazione tra console e componente Appl1</li>
 <li>la comunicazione avviene tramite stringhe in formato json</li>
 <li><code>{command:CMD}</code></li>
@@ -98,15 +101,17 @@ public void close( ) throws Exception;
 </li>
 <li><h4>ARCHITETTURA LOGICA</h4>
 <ul>
-<li><img src="../assets/Architettura_logica_step_3_1680267553655_0.jpg" alt="Architettura_logica_step_3.jpg" width="50%" height="50%"></li>
+<li><img src="../assets/image_1681721624967_0.png" alt="image.png"></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><h3>PIANO DI LAVORO</h3>
-<ul>
+:LOGBOOK:
+CLOCK: [2023-03-21 Tue 14:36:31]
+:END:<ul>
 <li><h4>command console (client)</h4>
-<ul>
+id:: 6419b2af-7f44-44e9-a934-aa788055c0bc<ul>
 <li>sviluppo interfaccia supporto di comunicazione client</li>
 <li>sviluppo di implementazione pilota su protocollo di esempio (HTTP)</li>
 <li>sviluppo di factory per interfaccia di comunicazione client</li>
@@ -133,8 +138,8 @@ id:: 6419b3e0-6e09-4ab1-afbf-01aa506ecb44<ul>
 <ul>
 <li><h3>architettura del sistema</h3>
 <ul>
-<li><img src="../assets/Progettazione_step_3_1680270581654_0.jpg" alt="Progettazione step 3.jpg" width="50%" height="50%"></li>
-<li>Appl1 sfrutta il supporto per ricevere messaggi da cmd console e definisce un handler che viene lanciato alla ricezione dei pacchetti il quale a sua volta esegue le funzionalita offerte da appl1 core</li>
+<li><img src="../assets/image_1681721663923_0.png" alt="image.png"></li>
+<li>Appl1 sfrutta il supporto per ricevere messaggi da cmd console e definisce un handler che viene lanciato alla ricezione dei pacchetti il quale a sua volta esegue le funzionalit\U000000e0 offerte da appl1 core</li>
 </ul>
 </li>
 </ul>
