@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <!--
+<link rel="stylesheet" type="text/css" href="../css/issStyle1.css">
+<script type="text/javascript" src="../css/issStyle.js"></script>
+-->
+<link rel="stylesheet" href="../styles/style.css">
+<head>
+   <meta charset="utf-8">
+<title>
+Appl1SonarStopLonghiMatteoV0
+</title></head>
+<body>
+<div id="top">
+<h1>LABORATORIO DI INGEGNERIA DEI SISTEMI SOFTWARE <font size="5"></font> </h1>
+</div>
+<div class="body">
+<ul>
+<li><h2>INTRODUZIONE</h2>
+<ul>
+<li><h3>ARCHITETTURA LOGICA DI PARTENZA</h3>
+<ul>
+<li><img src="../assets/image_1682334308113_0.png" alt="image.png"></li>
+</ul>
+</li>
+<li>componenti ottenuti nello step precedente<ul>
+<li><strong>CmdConsole</strong></li>
+<li><strong>Appl1</strong></li>
+<li><strong>Appl1Core</strong></li>
+</ul>
+</li>
+<li>\U000000e8 inoltre presente una infrastruttura logica sviluppata internamente per la definizione di <strong>attori</strong> si faccia riferimento a <a href="file:///home/matteo/universita/iss/isslab23/iss23Material/html/Actors23.html">Actors23</a></li>
+</ul>
+</li>
+<li><h2>REQUISITI</h2>
+<ul>
+<li>Impostare un sistema software che permette ad un utente umano di inviare, mediante una Console, comandi:<ul>
+<li><strong>start</strong>: per indurre a <em>VirtualRobot</em> a percorrare il bordo perimetrale (libero da ostacoli) della stanza rappresentata ne <em>La scena di WEnv</em></li>
+<li><strong>stop</strong>: per bloccare il robot</li>
+<li><strong>resume</strong>: per riattivare il robot</li>
+<li><strong>getPath</strong>: per ottenere dal robot informazioni sul cammino percorso</li>
+</ul>
+</li>
+<li>Inoltre \U000000e8 richiesto di:<ul>
+<li>fare in modo che il robot si fermi per un tempo prefissato ( 2sec ) ogni volta che esso viene rilevato da uno dei Sonar cablati nelle pareti della stanza;</li>
+<li>prefigurare il tempi previsti per lo sviluppo e i tempi effettivi necessari per il completamento del sistema;</li>
+<li>indicare il modo con cui si ritiene opportuno distribuire il prodotto finale.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2>ANALISI DEI REQUISITI</h2>
+<ul>
+<li><h4>sonar</h4>
+<ul>
+<li>componente della scena (inserire link)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2>ANALISI DEL PROBLEMA</h2>
+<ul>
+<li><h3>I COMANDI</h3>
+<ul>
+<li>la command console ideata nel precedente step soddisfa i requisiti di controllo sopra descritti, pertanto si prevede il riutilizzo per abbattere i costi di produzione</li>
+</ul>
+</li>
+<li><h3>LOGICA APPLICATIVA</h3>
+<ul>
+<li>La logica applicativa necessita di essere rivista per poter soddisfare il requisito sonar</li>
+<li>necessario poter eseguire azioni alla ricezione dei messaggi che segnalano l'interazione con il sonar</li>
+<li>si prevede un attore <strong>CORELOGICACTOR</strong> che si occupi della intercomunicazione con il virtual robot<ul>
+<li>il suo compito \U000000e8 quello di comunicare con il virtual robot, inivando messaggi di comando e elaborando i messaggi di stato che arrivano dal virtualrobot</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3>COMUNICAZIONE CON LA COMMAND CONSOLE</h3>
+<ul>
+<li>si prevede un attore <strong>CMDACTOR</strong> il cui compito \U000000e8 quello di comunicare con la command console, interpretarne i messaggi e comunicare a sua volta con l'attore incaricato di eseguire la logica applicativa</li>
+</ul>
+</li>
+<li><h3>IL PROBLEMA DELLA GETPATH</h3>
+<ul>
+<li>l'attuale implementazione della getPath risulta problematica in quanto prevede una cessione del controllo da parte della logica applicativa alla logica di aggiornamento dell'observer</li>
+<li>refactor della funzionalita sfruttando la comunicazione tramite eventi</li>
+<li>l'attore <strong>CORELOGICACTOR</strong> non notifica piu degli observer ma genera eventi che possono essere catturati da altri attori</li>
+<li>si introduce un nuovo attore <strong>PATHBUILDERACTOR</strong> incaricato di costruire il path dell robot elaborando gli eventi generati dall' attore <strong>CORELOGICACTOR</strong></li>
+</ul>
+</li>
+<li><h3>ARCHITETTURA LOGICA</h3>
+<ul>
+<li><img src="../assets/architettura-logica-attori_230424_134956_1682336887877_0.jpg" alt="architettura-logica-attori_230424_134956.jpg"></li>
+<li><h4>ARCHITETTURA LOGICA APPL1</h4>
+<ul>
+<li><img src="../assets/Appl1-attori_230424_134553_1682336928963_0.jpg" alt="Appl1-attori_230424_134553.jpg"></li>
+<li></li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3>PIANO DI LAVORO</h3>
+<ul>
+<li><h4>REALIZZAZIONE CORELOGICACTOR</h4>
+<ul>
+<li>implementazione delle logiche applicative</li>
+<li>tempo previsto riutilizzando il componente Appl1Core 1 ora</li>
+</ul>
+</li>
+<li><h4>REALIZZAZIONE PATHBUILDERACTOR</h4>
+<ul>
+<li>implementazione delle logiche di costruzione del percorso del robot</li>
+<li>tempo previsto riutilizzando il codice dell'observer 1/2 ore</li>
+</ul>
+</li>
+<li><h4>REALIZZAZIONE CMDACTOR</h4>
+<ul>
+<li>implementazione delle logiche di traduzione dei messaggi ricevuti dalla command console</li>
+<li>tempo previsto 30 minuti</li>
+</ul>
+</li>
+<li><h4>TESTING</h4>
+<ul>
+<li>test di funzionamento integrale del sistema</li>
+<li>tempo previsto 2 ore</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2>TEST PLANS</h2>
+</li>
+<li><h2>PROGETTO</h2>
+</li>
+<li><h2>DEPLOYMENT</h2>
+<ul>
+<li><h3>COMPONENTE APPL1</h3>
+<ul>
+<li>il componente appl1 verra reso disponibile tramite container docker</li>
+</ul>
+</li>
+<li><h3>CMD CONSOLE</h3>
+<ul>
+<li>la cmd console si prevede di distribuirla in formato JAR in quanto non necessita di particolari dipendenze</li>
+</ul>
+</li>
+</ul>
+</li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<!--<h2>Introduction</h2>
+<h2>Requirements</h2>
+<div class="remark">
+    Copy here the EXACT text fiven by the customer.
+    </div>
+<h2>Requirement analysis</h2>
+</div>
+<h2>Problem analysis</h2>
+<h2>Test plans</h2>
+<h2>Project</h2>
+</div>
+<h2>Testing</h2>
+<h2>Deployment</h2>
+<h2>Maintenance</h2>
+-->
+<!-- USEFUL
+<table style="width:100%" border="1">
+<tr>
+<td style="width:50%">
+</td>
+<td></td>
+</tr>
+</table>
+-->
+<br/><br/>
+</div>
+<div style="background-color:rgba(86, 56, 253, 0.9); width:60%;text-align:left;color:white">
+By Matteo Longhi email: matteo.longhi5@studio.unibo.it,
+<img src="../img/fototessera_edited.png" alt="mbot" width="15%" height="15%"><br>
+GIT repo: https:
+</div>
+</body>
+</html>
